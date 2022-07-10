@@ -1,16 +1,9 @@
 [package]
-name = "calc-rs"
+name = "tabula_calculatoria"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[dependencies]
-directories = "4.0"
-
-[dependencies.crossterm]
-version = "0.24"
-features = ["event-stream"]
-
 [workspace]
-members=["calc-core"]
+members=["calc_core","calc_terminal"]

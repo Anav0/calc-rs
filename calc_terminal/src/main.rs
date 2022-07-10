@@ -3,6 +3,7 @@ use std::{
     time::Duration,
 };
 
+use calc_core::Sheet;
 use crossterm::{
     cursor,
     event::{poll, read, Event, KeyCode, MouseEvent},
@@ -50,6 +51,17 @@ fn main() -> StdResult<(), Box<dyn std::error::Error>> {
 
     let size = terminal::size()?;
 
+    let sheet = Sheet::new();
+
+    sheet.change_s(0, 0, "Name");
+    sheet.change_s(1, 0, "Pork");
+    sheet.change_s(2, 0, "Chicken");
+    sheet.change_s(0, 1, "Price");
+    sheet.change_s(1, 1, "20.5");
+    sheet.change_s(2, 1, "10");
+
+    let sheets = vec![sheet];
+
     loop {
         if poll(Duration::from_millis(16))? {
             let exit = match read()? {
@@ -66,7 +78,7 @@ fn main() -> StdResult<(), Box<dyn std::error::Error>> {
                 break;
             }
 
-            draw(&mut stdout)?;
+            draw(&mut stdout, sheets)?;
 
             stdout.flush()?;
         }

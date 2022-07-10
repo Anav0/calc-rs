@@ -1,2 +1,2 @@
-# calc-rs
+# calc_rs
 Spreadsheet
